@@ -3,15 +3,24 @@ A dynamic SQL Server script to automatically restore multiple databases from .ba
 
 
 DECLARE @BackupPath NVARCHAR(260) = 'D:\AutoBackUp\';
+
 DECLARE @DataPath NVARCHAR(260) = 'D:\AutoBackUp\SQLData3\'; -- direction change 
+
 DECLARE @DBName NVARCHAR(100);
+
 DECLARE @SQL NVARCHAR(MAX);
+
 DECLARE @LogicalData NVARCHAR(128);
+
 DECLARE @LogicalLog NVARCHAR(128);
 
+
 -- Liste des bases à restaurer
+
 DECLARE @Databases TABLE (DBName NVARCHAR(100));
+
 INSERT INTO @Databases (DBName) VALUES
+
 ('PS_UserData'),
 ('PS_Billing'),
 ('PS_GameDefs'),
@@ -20,12 +29,15 @@ INSERT INTO @Databases (DBName) VALUES
 ('PS_ChatLog');
 
 -- Curseur sur les bases
+
 DECLARE db_cursor CURSOR FOR SELECT DBName FROM @Databases;
 
 OPEN db_cursor;
+
 FETCH NEXT FROM db_cursor INTO @DBName;
 
 WHILE @@FETCH_STATUS = 0
+
 BEGIN
     -- Supprimer la table temporaire si elle existe
     IF OBJECT_ID('tempdb..#FileList') IS NOT NULL DROP TABLE #FileList;
