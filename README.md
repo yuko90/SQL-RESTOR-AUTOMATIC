@@ -21,6 +21,3 @@ This script restores multiple SQL Server databases from `.bak` files using dynam
 2. List your database names in `@Databases`
 3. Run the script in SQL Server Management Studio (SSMS)
 
-## License
-
-MIT License — free to use, modify, distribute. Attribution appreciated.
