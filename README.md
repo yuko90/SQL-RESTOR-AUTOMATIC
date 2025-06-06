@@ -21,4 +21,4 @@ This script restores multiple SQL Server databases from `.bak` files using dynam
 
 ## License
 
-MIT
+MIT License — free to use, modify, distribute. Attribution appreciated.
